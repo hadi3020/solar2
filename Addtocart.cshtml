@@ -1,0 +1,81 @@
+﻿@model Solar_Panel.Models.OrderItem
+@{
+    ViewData["Title"] = "Addtocart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var total = 0;
+}
+
+
+
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Add to Cart</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+           
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h4 class="text-primary">Our Products</h4>
+            <h2 class="mb-4">CART DETAILS</h2>
+        </div>
+        <div class="row g-4">
+            <Table class="table table-responsive">
+
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Operation</th>
+
+                </tr>
+
+
+
+                @foreach (Cart item in ViewBag.mycart)
+                {
+                    var q = item.Price * item.Quantity;
+                    <tr>
+                        <td>@item.ProductId</td>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price/=</td>
+                        <td>@item.Quantity</td>
+                        <td>@q/=</td>
+                        <td> <a class="btn btn-primary" asp-action="minus" asp-route-id="@item.ProductId"> - </a>
+                            <a class="btn btn-primary" asp-action="plus" asp-route-id="@item.ProductId"> + </a>
+                        </td>
+                        @{
+                            total += q;
+                        }
+                    </tr>
+                }
+
+            </Table>
+        </div>
+
+        <div style="float:right;">
+            <h4> Total amount is @total/=</h4>
+            <span><a class="btn btn-primary" asp-action="checkout" asp-route-total="@total"> Checkout </a></span>
+        </div>
+
+ 
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<!-- Service End -->

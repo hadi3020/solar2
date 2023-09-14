@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Solar_Panel.Models.Product>
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Shop</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+             
+                <li class="breadcrumb-item text-white active" aria-current="page">Shop</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h6 class="text-primary">Our Products</h6>
+            <h1 class="mb-4">We Are Pioneers In The World Of Renewable Energy</h1>
+        </div>
+
+
+
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+             @foreach (var item in Model)
+            {
+            <div class="col">
+                <div class="card h-100">
+                        <img style="margin-left:100px;" src="~/@Url.Content(item.Pimage)" class="image-fluid" height="40%" width="40%" alt="...">
+                    <div class="card-body">
+                            <h5 class="card-title">@item.Pname</h5>
+                            <p class="card-text">@item.Pdetails</p>
+
+                            <div>
+                                <p><b>@item.Pprice /=</b></p>
+                            </div>
+                    </div>
+                    <div style="background-color:white; border:none; text-align:center; margin-bottom:20px;" class="card-footer">
+
+                            @if (ViewBag.session != null)
+                            {
+                                <a style="width:50%; height:40px; text-align:center;" class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Addtocart"
+                                   asp-route-id="@item.PId">Add To Cart</a>
+                            }
+                            else
+                            {
+                                <a style="width:50%; height:40px; text-align:center;" class="btn btn-outline-secondary btn-success text-light" asp-area="" asp-controller="Home" asp-action="Login"
+                                   asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString">Login</a>
+                            }
+                    </div>
+                </div>
+            </div>
+
+            }
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+<!-- Service End -->
+

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Checkout</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h4 class="text-primary">Our Products</h4>
+            <h2 class="mb-4">CART DETAILS</h2>
+        </div>
+        <div class="row g-4">
+
+
+            <form asp-action="checkout">
+                <div class="row g-3 mt-1">
+                    <div class="col-6">
+                        <label class="label label-primary">Enter Address: </label>
+                        <input name="add" class="form-control" required />                     
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-6">
+                        <label class="label label-primary">Enter Contact: </label>
+                        <input name="con" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-6">
+                        <label class="label label-primary">Enter Message: </label>
+                        <input name="msg" class="form-control" required />
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="col-12">
+                    <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Place Order</button>
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+</div>

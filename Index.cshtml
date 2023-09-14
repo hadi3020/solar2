@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Solar_Panel.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SIdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIdNavigation.SDetails)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
